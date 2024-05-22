@@ -64,7 +64,7 @@ export const login = async (req: express.Request, res: express.Response) => {
             path: '/',
             maxAge: 24 * 60 * 60 * 1000, // 1 day in milliseconds
             httpOnly: true,
-            secure: NODE_ENV,
+            secure: NODE_ENV === "production",
             sameSite: 'strict'
         });
 
