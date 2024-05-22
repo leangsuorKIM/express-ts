@@ -1,0 +1,12 @@
+/vendor
+.env
+composer.lock
+.DS_Store
+.idea
+.vscode
+node_modules
+package-lock.json
+
+/public/product/files
+docker-compose.yml
+docker
