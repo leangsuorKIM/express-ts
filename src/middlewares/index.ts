@@ -18,8 +18,7 @@ export const isOwner = async (req: express.Request, res: express.Response, next:
 
         next();
     } catch (error) {
-        console.log(error);
-        return res.sendStatus(400);
+        return res.status(500).json({ message: error })
     }
 }
 
@@ -41,7 +40,6 @@ export const isAuthenticated = async (req: express.Request, res: express.Respons
 
         return next();
     } catch (error) {
-        console.log(error);
-        return res.sendStatus(400)
+        return res.status(500).json({ message: error })
     }
 }
