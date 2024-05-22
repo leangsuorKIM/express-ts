@@ -2,6 +2,7 @@ import express from 'express';
 
 import { createUser, getUserByEmail } from '../db/users';
 import { authentication, random } from '../helpers';
+import { NODE_ENV } from '../../config'
 
 export const register = async (req: express.Request, res: express.Response) => {
     try {
@@ -58,7 +59,14 @@ export const login = async (req: express.Request, res: express.Response) => {
 
         await user.save();
 
-        res.cookie('NOTHANKPRO-AUTH', user.authentication.sessionToken, { domain: 'localhost', path: '/' });
+        res.cookie('NOTHANKPRO-AUTH', user.authentication.sessionToken, { 
+            domain: 'localhost', 
+            path: '/',
+            maxAge: 24 * 60 * 60 * 1000, // 1 day in milliseconds
+            httpOnly: true,
+            secure: NODE_ENV,
+            sameSite: 'strict'
+        });
 
         return res.status(200).json(user).end();
     } catch (error) {
