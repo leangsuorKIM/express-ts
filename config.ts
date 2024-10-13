@@ -8,3 +8,4 @@ export const NODE_ENV: string = process.env.NODE_ENV || 'development';
 
 export const PORT: number = parseInt(process.env.PORT || '8080', 10);
 export const DATABASE_URL: string = process.env.DATABASE_URL;
+export const OPENWEATHER_API_KEY: string = process.env.OPENWEATHER_API_KEY;
